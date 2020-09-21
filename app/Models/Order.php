@@ -10,6 +10,11 @@ class Order extends Model
     /** @var array */
     protected $fillable = ['product_id', 'quantity'];
 
+    /** @var array */
+    protected $casts = [
+        'created_at' => 'datetime:H:i:s',
+    ];
+
     /**
      * Products.
      *
