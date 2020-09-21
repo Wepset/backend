@@ -11,44 +11,49 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(): \Illuminate\Http\JsonResponse
     {
         $order = new \App\Models\Order();
 
         $products = $order->leftJoin('products', 'products.id', '=', 'orders.product_id')->get();
 
-        foreach($products as $product) {
-            $product->total_venda = 0;
-            $price = $product->preco_venda;
+        foreach ($products as $product) {
             $product->total_venda = $product->quantity * $product->preco_venda;
 
-            $product->preco_venda = [
-                [
-                    "value" => $price * 1.00,
-                    "label" => ($price * 1.00) ." -> 0%",
-                    "selected" => true
-                ],
-                [
-                    "value" => $price * 0.96,
-                    "label" => ($price * 0.96) ." -> 4%",
-                    "selected" => false
-                ],
-                [
-                    "value" => $price * 0.92,
-                    "label" => ($price * 0.92) ." -> 8%",
-                    "selected" => false
-                ],
-                [
-                    "value" => 0.00,
-                    "label" => "--OUTROS--",
-                    "selected" => false
-                ],
-            ];
+            $product->preco_venda = $this->price($product->preco_venda, 3);
         }
 
         return response()->json($products);
+    }
+
+    /**
+     * Price.
+     * 
+     * @param float $price
+     * 
+     * @return array $arr
+     */
+    public function price(float $price, int $n): array
+    {
+        $arr = [];
+
+        for ($i = 0; $i < $n; $i++) {
+            $arr[] = [
+                "value" => round($price * (1 - $i * 0.04), 2),
+                "label" => round($price * (1 - $i * 0.04), 2) . " -> " . (1 - $i * 0.04) . "%",
+                "selected" => ($i === 0) ? true : false,
+            ];
+        }
+
+        $arr[] = [
+            "value" => 0.00,
+            "label" => "--OUTROS--",
+            "selected" => false
+        ];
+
+        return $arr;
     }
 
     /**
@@ -80,33 +85,12 @@ class OrderController extends Controller
         }
 
         $order->save();
+
         $product = Product::find($order->product_id);
+
         $product->quantity = $order->quantity;
         $product->total_venda = $product->quantity * $product->preco_venda;
-        $price = $product->preco_venda;
-
-        $product->preco_venda = [
-            [
-                "value" => $price * 1.00,
-                "label" => ($price * 1.00) ." -> 0%",
-                "selected" => true
-            ],
-            [
-                "value" => $price * 0.96,
-                "label" => ($price * 0.96) ." -> 4%",
-                "selected" => false
-            ],
-            [
-                "value" => $price * 0.92,
-                "label" => ($price * 0.92) ." -> 8%",
-                "selected" => false
-            ],
-            [
-                "value" => $price * 0.00,
-                "label" => "--OUTROS--",
-                "selected" => false
-            ],
-        ];
+        $product->preco_venda = $this->price($product->preco_venda, 3);
 
         return response()->json($product);
     }
