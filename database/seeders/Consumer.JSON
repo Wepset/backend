@@ -17,8 +17,8 @@
         "ULTIMA_VENDA": "17/08/2020 09:12:44",
         "LIMITE_CREDITO": "3.700,00",
         "GRUPO_ECONOMICO": "COMPRAS",
-        "VENDEDOR_INTERNO": "WAGNER",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_INTERNO": 6162,
+        "VENDEDOR_EXTERNO": 24,
         "EMAIL": "POSTOJACAREIBI@GMAIL.COM"
     },
     {
@@ -40,7 +40,7 @@
         "LIMITE_CREDITO": "4.000,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "CRIS",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 24,
         "EMAIL": "JOHNDOE@GMAIL.COM"
     },
     {
@@ -62,7 +62,7 @@
         "LIMITE_CREDITO": "1.000,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "JEAN",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 24,
         "EMAIL": "JOHNDOE@GMAIL.COM"
     },
     {
@@ -84,7 +84,7 @@
         "LIMITE_CREDITO": "0.00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "JOÃO DA SILVA",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 24,
         "EMAIL": "JOHNDOE@GMAIL.COM"
     },
     {
@@ -106,7 +106,7 @@
         "LIMITE_CREDITO": "0.00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "JOÃO DA SILVA",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 24,
         "EMAIL": "mecanicakrammes@hotmail.com"
     },
     {
@@ -128,7 +128,7 @@
         "LIMITE_CREDITO": "2.000,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "CRIS",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 24,
         "EMAIL": "mecanicaristow@hotmail.com"
     },
     {
@@ -150,7 +150,7 @@
         "LIMITE_CREDITO": "14.000,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "WAGNER",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 24,
         "EMAIL": "FINANCEIRO.GIRUSTURISMO@OUTLOOK.COM"
     },
     {
@@ -172,7 +172,7 @@
         "LIMITE_CREDITO": "1.500,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "JOÃO DA SILVA",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 2207,
         "EMAIL": "JOHNDOE@GMAIL.COM"
     },
     {
@@ -194,7 +194,7 @@
         "LIMITE_CREDITO": "7.000,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "JOÃO DA SILVA",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 291,
         "EMAIL": "fgmecanica@hotmail.com"
     },
     {
@@ -216,7 +216,7 @@
         "LIMITE_CREDITO": "4.000,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "CRIS",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 1227,
         "EMAIL": "MECANICAMECAVEL.IBIRUBA@HOTMAIL.COM"
     },
     {
@@ -238,7 +238,7 @@
         "LIMITE_CREDITO": "23.000,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "CRIS",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 26,
         "EMAIL": "COMPRAS@KADERLI.COM.BR"
     },
     {
@@ -260,7 +260,7 @@
         "LIMITE_CREDITO": "40.400,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "CRIS",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 24,
         "EMAIL": "MECANICAMIUDO@HOTMAIL.COM"
     },
     {
@@ -282,7 +282,7 @@
         "LIMITE_CREDITO": "3.000,00",
         "GRUPO_ECONOMICO": "COMPRAS",
         "VENDEDOR_INTERNO": "CRIS",
-        "VENDEDOR_EXTERNO": "JOHN DOE",
+        "VENDEDOR_EXTERNO": 24,
         "EMAIL": "JOHNDOE@GMAIL.COM"
     }
 ]
