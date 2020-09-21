@@ -20,7 +20,7 @@ class ProductController extends Controller
         $product = Product::query();
 
         foreach ($request->all() as $key => $arg) {
-            $product->whereIn($key, [$arg]);
+            $product->where(strtolower($key), 'like', "%{$arg}%");
         }
 
         return response()->json($product->get());
