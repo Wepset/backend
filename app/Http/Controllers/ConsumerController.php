@@ -24,13 +24,28 @@ class ConsumerController extends Controller
         $id = isset($args['id']) ? (int) $args['id'] : 0;
 
         if ($id > 0) {
-            return response()->json($consumer->where('id', $id)->get());
+            $consumer->where('id', $id);
         } else {
             foreach ($request->all() as $key => $arg) {
-                $consumer->where(strtolower($key), 'like', "%{$arg}%");
+                $consumer->where(strtolower("consumers.{$key}"), 'like', "%{$arg}%");
+            }
+        }
+
+        if ($consumer->count() === 1) {
+            $data = $consumer->first();
+
+            if ($interno = \App\Models\Consumer::find($data->vendedor_interno)) {
+                $data->interno = $interno;
+                $data->interno->status = true;
+            } else {
+                $data->interno = [
+                    'status' => false
+                ];
             }
 
-            return response()->json($consumer->get());
+            return response()->json([$data]);
         }
+
+        return response()->json($consumer->get());
     }
 }
