@@ -11,6 +11,9 @@ class ProductSeeder extends Seeder
     /** @var string */
     private const URL = "https://raw.githubusercontent.com/MagicalStrangeQuark/JSON/master/JSON/Colors.JSON";
 
+    /** @var string */
+    private const PRODUCTS = "Product.JSON";
+
     /**
      * Run the database seeds.
      *
@@ -18,20 +21,22 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $data = json_decode(file_get_contents(static::URL));
+        $data = json_decode(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . static::PRODUCTS));
 
-        for ($i = 0; $i < 25; $i++) {
+        // dd($data);
+
+        foreach ($data as $dt) {
             DB::table('products')->insert([
                 "codigo" => rand(1, 10000),
-                "codigo_interno" => rand(1, 10000),
-                "tipo" => strtoupper(\Illuminate\Support\Str::random(10)),
-                "sub_descricao" => strtoupper(\Illuminate\Support\Str::random(10)),
-                "fabricante" => strtoupper(\Illuminate\Support\Str::random(10)),
-                "marca" => strtoupper(\Illuminate\Support\Str::random(15)),
-                "segmento" => strtoupper(\Illuminate\Support\Str::random(15)),
-                "obs" => strtoupper(\Illuminate\Support\Str::random(10)),
-                "obs_complementar" => strtoupper(\Illuminate\Support\Str::random(10)),
-                "ncm" => "8511.1000",
+                "codigo_interno" => $dt->CODIGO_INTERNO,
+                "tipo" => $dt->TIPO,
+                "sub_descricao" => $dt->SUB_DESCRICAO,
+                "fabricante" => $dt->FABRICANTE,
+                "marca" => $dt->MARCA,
+                "segmento" => $dt->SEGMENTO,
+                "obs" => substr($dt->OBS, 0, 15),
+                "obs_complementar" => $dt->OBS_COMPLEMENTAR,
+                "ncm" => $dt->NCM,
                 "minimo" => rand(1, 100),
                 "maximo" => rand(1, 100),
                 "preco_entrada" => (rand(1, 100) + (rand(1, 100) / 100)),
@@ -39,32 +44,32 @@ class ProductSeeder extends Seeder
                 "preco_medio" => (rand(1, 100) + (rand(1, 100) / 100)),
                 "preco_venda" => (rand(1, 100) + (rand(1, 100) / 100)),
                 "preco_pesquisa" => (rand(1, 100) + (rand(1, 100) / 100)),
-                "markup" => "80%",
+                "markup" => $dt->MARKUP,
                 "coeficiente_markup" => (rand(1, 100) + (rand(1, 100) / 100)),
                 "qtd_multipla_compra" => rand(1, 100),
                 "qtd_multipla_venda" => rand(1, 100),
                 "qtd_multipla_aplicacao" => rand(1, 100),
-                "atacado" => false,
-                "varejo" => false,
-                "situacao" => "ATIVO",
+                "atacado" => $dt->ATACADO,
+                "varejo" => $dt->VAREJO,
+                "situacao" => $dt->SITUACAO,
                 "antigo" => strtoupper(\Illuminate\Support\Str::random(10)),
-                "cor" => $this->randomColor($data),
-                "lado" => "DIREITO",
-                "posicao" => "DIREITO",
-                "localizacao" => strtoupper(\Illuminate\Support\Str::random(10)),
-                "extremidade" => strtoupper(\Illuminate\Support\Str::random(10)),
-                "uso" => strtoupper(\Illuminate\Support\Str::random()),
-                "imagem" => strtoupper(\Illuminate\Support\Str::random(10)),
-                "gtin" => $this->randomNumber(13),
-                "gtin_14" => $this->randomNumber(14),
-                "medida" => strtoupper(\Illuminate\Support\Str::random(2)),
-                "prazo_garantia" => rand(1, 100),
-                "obs_garantia" => strtoupper(\Illuminate\Support\Str::random()),
-                "grupo_item" => strtoupper(\Illuminate\Support\Str::random()),
-                "sub_grupo_item" => strtoupper(\Illuminate\Support\Str::random()),
-                "fornecedor_referencial" => strtoupper(\Illuminate\Support\Str::random()),
-                "un" => strtoupper(\Illuminate\Support\Str::random(3)),
-                "referencia" => strtoupper(\Illuminate\Support\Str::random()),
+                "cor" => $dt->COR,
+                "lado" => $dt->LADO,
+                "posicao" => $dt->POSICAO,
+                "localizacao" => $dt->LOCALIZACAO,
+                "extremidade" => $dt->EXTREMIDADE,
+                "uso" => $dt->USO,
+                "imagem" => $dt->IMAGEM,
+                "gtin" => $dt->GTIN,
+                "gtin_14" => $dt->GTIN_14,
+                "medida" => $dt->MEDIDA,
+                "prazo_garantia" => $dt->PRAZO_GARANTIA,
+                "obs_garantia" => $dt->OBS_GARANTIA,
+                "grupo_item" => $dt->GRUPO_ITEM,
+                "sub_grupo_item" => $dt->SUB_GRUPO_ITEM,
+                "fornecedor_referencial" => $dt->FORNECEDOR_REFERENCIAL,
+                "un" => $dt->UN,
+                "referencia" => $dt->REFERENCIA,
                 "cst_icms" => (rand(1, 100) + (rand(1, 100) / 100)),
                 "preco_promocao" => (rand(1, 100) + (rand(1, 100) / 100)),
                 "cod_importacao_xml" => rand(1, 1000),
@@ -81,7 +86,7 @@ class ProductSeeder extends Seeder
                 "codigo_curva_abc_fornecedor" => rand(1, 100),
                 "valor_curva_abc_fornecedor" => (rand(1, 100) + (rand(1, 100) / 100)),
                 "registro_curva_abc_fornecedor" => rand(1, 100),
-                "uf_curva_abc_fornecedor" => "RS",
+                "uf_curva_abc_fornecedor" => $dt->UF_CURVA_ABC_FORNECEDOR,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
