@@ -23,9 +23,9 @@ class ProductSeeder extends Seeder
     {
         $data = json_decode(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . static::PRODUCTS));
 
-        // dd($data);
-
         foreach ($data as $dt) {
+            $preco_venda = (rand(1, 100) + (rand(1, 100) / 100));
+
             DB::table('products')->insert([
                 "codigo" => rand(1, 10000),
                 "codigo_interno" => $dt->CODIGO_INTERNO,
@@ -42,7 +42,7 @@ class ProductSeeder extends Seeder
                 "preco_entrada" => (rand(1, 100) + (rand(1, 100) / 100)),
                 "preco_custo" => (rand(1, 100) + (rand(1, 100) / 100)),
                 "preco_medio" => (rand(1, 100) + (rand(1, 100) / 100)),
-                "preco_venda" => (rand(1, 100) + (rand(1, 100) / 100)),
+                "preco_venda" => $preco_venda,
                 "preco_pesquisa" => (rand(1, 100) + (rand(1, 100) / 100)),
                 "markup" => $dt->MARKUP,
                 "coeficiente_markup" => (rand(1, 100) + (rand(1, 100) / 100)),
@@ -71,7 +71,7 @@ class ProductSeeder extends Seeder
                 "un" => $dt->UN,
                 "referencia" => $dt->REFERENCIA,
                 "cst_icms" => (rand(1, 100) + (rand(1, 100) / 100)),
-                "preco_promocao" => (rand(1, 100) + (rand(1, 100) / 100)),
+                "preco_promocao" => $preco_venda * 0.85,
                 "cod_importacao_xml" => rand(1, 1000),
                 "base_calculo_icms_ret" => 0.00,
                 "perc_icms_ret" => (rand(1, 100) + (rand(1, 100) / 100)),
