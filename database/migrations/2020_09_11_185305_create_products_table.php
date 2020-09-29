@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->string("ncm", 32);
             $table->string("minimo", 32);
             $table->string("maximo", 32);
-            $table->decimal("preco_entrada", 32);
+            $table->decimal("preco_entrada", 8, 2);
             $table->decimal("preco_custo", 8, 2);
             $table->decimal("preco_medio", 8, 2);
             $table->decimal("preco_venda", 8, 2);
@@ -59,7 +59,7 @@ class CreateProductsTable extends Migration
             $table->string("un", 32);
             $table->string("referencia", 32);
             $table->string("cst_icms", 32);
-            $table->string("preco_promocao", 32);
+            $table->decimal("preco_promocao", 8, 2);
             $table->string("cod_importacao_xml", 32);
             $table->string("base_calculo_icms_ret", 32);
             $table->string("perc_icms_ret", 32);
