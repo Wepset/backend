@@ -22,7 +22,7 @@ class OrderController extends Controller
         foreach ($products as $product) {
             $product->total_venda = $product->quantity * $product->preco_venda;
 
-            $product->preco_venda = $this->price($product->preco_venda, 3);
+            $product->preco_venda = $this->price($product, 3);
         }
 
         return response()->json($products);
@@ -35,22 +35,22 @@ class OrderController extends Controller
      * 
      * @return array $arr
      */
-    public function price(float $price, int $n): array
+    public function price(\Illuminate\Database\Eloquent\Model $product, int $n): array
     {
         $arr = [];
 
         for ($i = 0; $i < $n; $i++) {
             $arr[] = [
-                "value" => round($price * (1 - $i * 0.04), 2),
-                "label" => round($price * (1 - $i * 0.04), 2) . " -> " . (1 - $i * 0.04) . "%",
+                "value" => round($product->preco_venda * (1 - $i * 0.04), 2),
+                "label" => round($product->preco_venda * (1 - $i * 0.04), 2) . " -> " . (1 - $i * 0.04) . "%",
                 "selected" => ($i === 0) ? true : false,
             ];
         }
 
         $arr[] = [
-            "value" => 0.00,
-            "label" => "--OUTROS--",
-            "selected" => false
+            "value" => $product->preco_promocao,
+            "label" => $product->preco_promocao . " -> " . "PROM",
+            "selected" => false,
         ];
 
         return $arr;
@@ -90,7 +90,7 @@ class OrderController extends Controller
 
         $product->quantity = $order->quantity;
         $product->total_venda = $product->quantity * $product->preco_venda;
-        $product->preco_venda = $this->price($product->preco_venda, 3);
+        $product->preco_venda = $this->price($product, 3);
 
         return response()->json($product);
     }
