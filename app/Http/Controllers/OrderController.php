@@ -35,7 +35,7 @@ class OrderController extends Controller
      * 
      * @return array $arr
      */
-    public function price(\Illuminate\Database\Eloquent\Model $product, int $n): array
+    public function price($product, int $n): array
     {
         $arr = [];
 
@@ -77,11 +77,11 @@ class OrderController extends Controller
         $order = Order::where('product_id', $request->id)->first();
 
         if ($order) {
-            $order->quantity += 1;
+            $order->quantity += $request->quantity;
         } else {
             $order = new Order();
             $order->product_id = $request->id;
-            $order->quantity = 1;
+            $order->quantity = $request->quantity;
         }
 
         $order->save();
