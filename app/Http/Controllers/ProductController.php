@@ -17,12 +17,19 @@ class ProductController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $product = Product::query();
+        $query = Product::query();
 
         foreach ($request->all() as $key => $arg) {
-            $product->where(strtolower($key), 'like', "%{$arg}%");
+            $query->where(strtolower($key), 'like', "%{$arg}%");
         }
 
-        return response()->json($product->get());
+        $products = $query->get();
+
+        foreach ($products as $product) {
+            $product->preco_venda = (new OrderController())->price($product, 3);
+            $product->quantity = 0;
+        }
+
+        return response()->json($products);
     }
 }

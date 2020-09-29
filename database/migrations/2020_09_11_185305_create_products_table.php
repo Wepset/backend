@@ -15,18 +15,18 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string("codigo", 32);
-            $table->string("codigo_interno", 32);
-            $table->string("tipo", 32);
-            $table->string("sub_descricao", 32);
-            $table->string("fabricante", 32);
-            $table->string("marca", 32);
+            $table->string("codigo", 32)->nullable(false)->unique();
+            $table->string("codigo_interno", 32)->nullable(false)->unique();
+            $table->string("tipo", 32)->nullable(false);
+            $table->string("sub_descricao", 32)->nullable(false)->unique();
+            $table->string("fabricante", 32)->nullable(false);
+            $table->string("marca", 32)->nullable(false);
             $table->string("segmento", 32);
-            $table->string("obs", 32);
-            $table->string("obs_complementar", 32);
-            $table->string("ncm", 32);
-            $table->string("minimo", 32);
-            $table->string("maximo", 32);
+            $table->string("obs", 32)->nullable(false);
+            $table->string("obs_complementar", 32)->nullable(false)->unique();
+            $table->string("ncm", 32)->nullable(false)->unique();
+            $table->string("minimo", 32)->nullable(false);
+            $table->string("maximo", 32)->nullable(false);
             $table->decimal("preco_entrada", 8, 2);
             $table->decimal("preco_custo", 8, 2);
             $table->decimal("preco_medio", 8, 2);
