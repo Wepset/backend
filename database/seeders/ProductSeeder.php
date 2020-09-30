@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
                 "fabricante" => $dt->FABRICANTE,
                 "marca" => $dt->MARCA,
                 "segmento" => $dt->SEGMENTO,
-                "obs" => substr($dt->OBS, 0, 15),
+                "obs" => substr($dt->OBS, 0, 30),
                 "obs_complementar" => $dt->OBS_COMPLEMENTAR,
                 "ncm" => $dt->NCM,
                 "minimo" => rand(1, 100),
