@@ -27,7 +27,7 @@ class ProductSeeder extends Seeder
             $preco_venda = (rand(1, 100) + (rand(1, 100) / 100));
 
             DB::table('products')->insert([
-                "codigo" => rand(1, 10000),
+                "codigo" => $dt->CODIGO,
                 "codigo_interno" => $dt->CODIGO_INTERNO,
                 "tipo" => $dt->TIPO,
                 "sub_descricao" => $dt->SUB_DESCRICAO,

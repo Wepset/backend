@@ -18,13 +18,13 @@ class CreateProductsTable extends Migration
             $table->string("codigo", 32)->nullable(false)->unique();
             $table->string("codigo_interno", 32)->nullable(false)->unique();
             $table->string("tipo", 32)->nullable(false);
-            $table->string("sub_descricao", 32)->nullable(false)->unique();
+            $table->string("sub_descricao", 32)->nullable(false);
             $table->string("fabricante", 32)->nullable(false);
             $table->string("marca", 32)->nullable(false);
             $table->string("segmento", 32);
             $table->string("obs", 32)->nullable(false);
-            $table->string("obs_complementar", 32)->nullable(false)->unique();
-            $table->string("ncm", 32)->nullable(false)->unique();
+            $table->string("obs_complementar", 32)->nullable(false);
+            $table->string("ncm", 32)->nullable(false);
             $table->string("minimo", 32)->nullable(false);
             $table->string("maximo", 32)->nullable(false);
             $table->decimal("preco_entrada", 8, 2);
