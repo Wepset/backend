@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('quantity', false);
             $table->unsignedBigInteger('product_id')->unique();
             $table->foreign('product_id')->references('id')->on('products');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
